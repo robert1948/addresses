@@ -1,0 +1,148 @@
+sudo apt-get update
+python --version
+pip --version
+python -m venv virt
+source venv/Scripts/activate
+Scripts/activate  (in virtual env directory)
+venv/Scripts/activate
+pip freeze
+pip install mysql
+pip install django
+pip freeze > requirements.txt
+pip freeze
+django-admin startproject myclub_website
+cd myclub_website
+mypy events/models.py
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+python manage.py startapp address_book
+python manage.py startapp events 
+python manage.py startapp members
+python manage.py startapp myblog
+python manage.py startapp payments
+python manage.py startapp subscriptions
+python manage.py startapp blogs
+python manage.py collectstatic
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+import os
+docker-compose build
+docker-compose run --rm app sh -c "python manage.py startapp core"
+docker images 
+docker ps -a
+docker-compose run --rm app sh -c "python manage.py startapp core" 
+docker image rm   (image id)
+docker system prune -a   (remove all images)
+docker build -t myclub_website .
+docker run -p 8000:8000 myclub_website:latest
+docker-compose up
+docker-compose up -d
+docker-compose down
+docker-compose up --build
+docker-compose run --rm app sh -c "python manage.py startapp core"
+docker-compose run --rm app sh -c "python manage.py makemigrations"
+docker-compose run --rm app sh -c "python manage.py migrate"
+docker-compose run --rm app sh -c "python manage.py createsuperuser"
+docker-compose run --rm app sh -c "python manage.py runserver"
+docker-compose run --rm app sh -c "python manage.py collectstatic"
+docker-compose run --rm app sh -c "python manage.py test"
+docker-compose run --rm app sh -c "python manage.py test && flake8"
+docker-compose run --rm app sh -c "python manage.py test && flake8 && mypy"
+docker-compose run --rm app sh -c "python manage.py test && flake8 && mypy && coverage run --source='.' manage.py test && coverage report"
+
+docker start (container id)
+docker stop (container id)
+docker ps -a
+docker images
+docker image rm (image id)
+docker system prune -a
+docker-compose up --build
+
+docker run --name myclub_website -p 8000:8000 myclub_website:latest
+docker run --name myclub_website -p 8000:8000 -d myclub_website:latest
+
+
+docker-compose run --rm app sh -c "python manage.py startapp core"
+docker-compose run --rm app sh -c "python manage.py makemigrations"
+
+docker-compose -f docker-compose-deploy.yml down --volumes
+docker-compose -f docker-compose-deploy.yml build
+
+docker-compose -f docker-compose-deploy.yml up --build
+docker-compose -f docker-compose-deploy.yml up
+
+docker-compose -f docker-compose-deploy.yml run --rm app sh -c "python manage.py createsuperuser"
+
+################################################### Deploying Django with Docker Compose ###############################################
+
+https://www.youtube.com/watch?v=mScd-Pc_pX0
+
+####################################EC2 -- GIT ###################################################
+
+sudo yum install git -y
+sudo amazon-linux-extras install docker
+sudo yum install docker -y
+sudo systemctl enable docker.service
+sudo systemctl start docker.service
+sudo usermod -aG docker ec2-user
+sudo curl -SL https://github.com/docker/compose/releases/download/v2.25.0/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+ssh-keygen -t ed25519 -b 4096
+cat ~ /.ssh/id_ed25519.pub
+
+git clone git@github.com:robert1948/thunderlux.git 
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJf2Lt+gsQpiBO/PPgTfGWe4dVHly8XzQObM/qnNri0E ec2-user@ip-172-31-16-13.eu-central-1.compute.internal
+DB_NAME=app   
+DB_USER=robert
+DB_PASS=Stinkie@1948
+SECRET_KEY=dbbXpVkjFwYnrxqepLx5ayn9 
+ALLOWED_HOSTS=ec2-3-71-188-214.eu-central-1.compute.amazonaws.com
+
+docker-compose -f docker-compose-deploy.yml run --rm app sh -c "python manage.py migrate"
+docker-compose -f docker-compose-deploy.yml run --rm app sh -c "python manage.py collectstatic"
+docker-compose -f docker-compose-deploy.yml up --build
+docker-compose -f docker-compose-deploy.yml up -d
+
+docker-compose down
+docker-compose build
+docker-compose up
+
+----------------------------------------
+EC2 - github
+git status
+git checkout main
+git pull origin main
+docker-compose -f docker-compose-deploy.yml build app
+docker-compose -f docker-compose-deploy.yml up --no-deps -d app
+docker-compose -f docker-compose-deploy.yml run --rm app sh -c "python manage.py migrate"
+docker-compose -f docker-compose-deploy.yml run --rm app sh -c "python manage.py collectstatic"
+docker-compose -f docker-compose-deploy.yml up -d
+git pull git@github.com:robert1948/thunderlux.git
+
+
+cat ~ /.ssh / id_rsa.pub
+
+1.10.42
+https://www.youtube.com/watch?v=mScd-Pc_pX0
+
+aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 471112944192.dkr.ecr.eu-central-1.amazonaws.com
+WARNING! Your password will be stored unencrypted in /home/robert/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+services:
+  nginx-proxy:
+    image: "nginx"
+    volumes:
+      - "${EB_LOG_BASE_DIR}/nginx-proxy:/var/log/nginx"
+
+
+
